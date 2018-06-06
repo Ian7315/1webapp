@@ -1,3 +1,5 @@
+__author__ = 'Ian Han'
+
 import logging; logging.basicConfig(level=logging.INFO)
 
 import asyncio, os, json, time
