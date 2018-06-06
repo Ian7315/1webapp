@@ -7,11 +7,12 @@ from aiohttp import web
 def index(request):
     return web.Response(body='<h1>Awesome</h1>')
 
-@asyncio.coroutine
-def init(loop):
+#@asyncio.coroutine
+async def init(loop):
     app = web.Application(loop=loop)
     app.router.add_route('GET', '/', index)
-    srv = yield from loop.create_server(app.make_handler(), '127.0.0.1',8000)
+#     srv = yield from loop.create_server(app.make_handler(), '127.0.0.1',8000)
+    srv = await loop.create_server(app.make_handler(), '127.0.0.1',8000)
     logging.info('server started at http://127.0.0.1:8000')
     return srv
     
